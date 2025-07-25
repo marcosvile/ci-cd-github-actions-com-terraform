@@ -1,14 +1,19 @@
-output "service_url" {
-  description = "URL do serviço implantado no Render"
-  value       = render_web_service.app.service_url
+output "name" {
+  value = render_web_service.app.name
+  
 }
 
-output "service_id" {
-  description = "ID do serviço no Render"
-  value       = render_web_service.app.id
+output "id" {
+  value = render_web_service.app.id
+  
 }
 
-output "service_name" {
-  description = "Nome do serviço no Render"
-  value       = render_web_service.app.name
+output "plan" {
+  value = render_web_service.app.plan
+  
+}
+
+output "url" {
+  value = render_web_service.app.url
+  
 }
