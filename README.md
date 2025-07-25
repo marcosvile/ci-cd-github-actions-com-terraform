@@ -28,19 +28,25 @@ A aplicação consiste em uma API simples construída com Flask que:
    cd ci-cd-h3
    ```
 
-2. **Construa a imagem Docker:**
+2. **Navegue até o diretório da aplicação:**
+
+   ```bash
+   cd app
+   ```
+
+3. **Construa a imagem Docker:**
 
    ```bash
    docker build -t api-advice .
    ```
 
-3. **Execute o container:**
+4. **Execute o container:**
 
    ```bash
    docker run -p 80:80 api-advice
    ```
 
-4. **Teste a API:**
+5. **Teste a API:**
 
    - **Página inicial:**
      ```bash
@@ -73,15 +79,20 @@ A aplicação consiste em uma API simples construída com Flask que:
 
 ```
 ci-cd-h3/
-├── Dockerfile          # Configuração do container Docker
-├── advice.py          # Aplicação Flask principal
-├── requirements.txt   # Dependências Python
-└── README.md         # Este arquivo
+├── .editorconfig       # Configurações do editor
+├── .gitignore         # Arquivos ignorados pelo Git
+├── LICENSE            # Licença do projeto
+├── README.md          # Este arquivo
+├── app/               # Aplicação principal
+│   ├── Dockerfile     # Configuração do container Docker
+│   ├── advice.py      # Aplicação Flask principal
+│   └── requirements.txt # Dependências Python
+└── infra/             # Infraestrutura (vazia por enquanto)
 ```
 
 ## Docker
 
-O Dockerfile inclui:
+O Dockerfile está localizado na pasta `app/` e inclui:
 
 - **Alpine Linux** como sistema base (leve e eficiente)
 - **Python 3** e dependências de desenvolvimento
@@ -89,3 +100,5 @@ O Dockerfile inclui:
 - **Instalação automática** das dependências via pip
 - **Configuração de porta 80** para acesso direto via HTTP
 - **Encoding UTF-8** para suporte completo a caracteres especiais
+
+**Nota:** Certifique-se de executar os comandos Docker dentro do diretório `app/` onde está localizado o Dockerfile.
