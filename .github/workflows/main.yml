@@ -5,7 +5,7 @@ on:
     branches: [staging]
 
 jobs:
-  build-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,19 +15,26 @@ jobs:
       - name: Build da imagem Docker
         run: docker build -t ghcr.io/${{ github.repository }}:latest .
 
-      - name: Rodar testes dentro do com curl
+      - name: Rodar testes dentro do container com curl
         run: |
           docker run --rm -d -p 80:80 --name test-container ghcr.io/${{ github.repository }}:latest
           sleep 5
           curl -f http://localhost/ || exit 1
           curl -f http://localhost/frase || exit 1
+          curl -s -o /dev/null -w "%{http_code}" http://localhost/inexistente | grep -q "404" && echo "404 OK" || exit 1
           docker stop test-container
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.12.2
 
       - name: Deploy simulado no Render com Terraform
         run: |
+          cd infra
           terraform init
           terraform plan -out=tfplan
           terraform apply -auto-approve
         env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+          TF_VAR_render_api_key: ${{ secrets.RENDER_API_KEY }}
+          TF_VAR_render_owner_id: ${{ secrets.RENDER_OWNER_ID }}
