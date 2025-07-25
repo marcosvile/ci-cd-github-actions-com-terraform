@@ -10,7 +10,7 @@ RUN apk update && apk add --no-cache \
 
 WORKDIR /app
 
-COPY . /app/
+COPY app/ /app/
 
 RUN python3 -m venv venv && \
     . venv/bin/activate && \
