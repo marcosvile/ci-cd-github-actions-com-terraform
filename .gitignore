@@ -178,6 +178,7 @@ pyrightconfig.json
 # Local .terraform directories
 **/.terraform/*
 infra/.terraform.lock.hcl
+.secrets
 
 # .tfstate files
 *.tfstate

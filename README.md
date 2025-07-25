@@ -1,4 +1,4 @@
-# CI/CD - H3
+# CI/CD com GitHub Actions e Terraform
 
 Este projeto demonstra a implementação de um pipeline CI/CD para containerizar e executar uma API Python Flask que fornece frases motivacionais aleatórias.
 
