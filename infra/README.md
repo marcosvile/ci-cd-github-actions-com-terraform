@@ -37,14 +37,6 @@ Este diretório contém a configuração Terraform para provisionar a infraestru
    ```bash
    terraform apply
    ```
-
-## Integração com GitHub Actions
-
-Esta configuração foi projetada para funcionar com GitHub Actions que:
-
-1. Faz build da imagem Docker
-2. Trigger do deploy automático no Render
-
 ## Recursos Provisionados
 
 - **Render Web Service**: Serviço web para hospedar a aplicação Flask
