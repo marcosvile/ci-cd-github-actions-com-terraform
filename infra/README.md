@@ -43,8 +43,7 @@ Este diretório contém a configuração Terraform para provisionar a infraestru
 Esta configuração foi projetada para funcionar com GitHub Actions que:
 
 1. Faz build da imagem Docker
-2. Faz push para um registry (GitHub Container Registry)
-3. Trigger do deploy automático no Render
+2. Trigger do deploy automático no Render
 
 O Render detectará automaticamente mudanças no repositório GitHub e fará o deploy usando o Dockerfile na pasta `app/`.
 
