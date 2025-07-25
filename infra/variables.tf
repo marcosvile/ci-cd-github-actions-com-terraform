@@ -3,3 +3,9 @@ variable "render_api_key" {
   type        = string
   sensitive   = true
 }
+
+variable "render_owner_id" {
+  description = "ID do proprietário (username) no Render"
+  type        = string
+  sensitive = true
+}
