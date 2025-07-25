@@ -45,8 +45,6 @@ Esta configuração foi projetada para funcionar com GitHub Actions que:
 1. Faz build da imagem Docker
 2. Trigger do deploy automático no Render
 
-O Render detectará automaticamente mudanças no repositório GitHub e fará o deploy usando o Dockerfile na pasta `app/`.
-
 ## Recursos Provisionados
 
 - **Render Web Service**: Serviço web para hospedar a aplicação Flask
