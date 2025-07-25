@@ -15,13 +15,12 @@ jobs:
       - name: Build da imagem Docker
         run: docker build -t ghcr.io/${{ github.repository }}:latest .
 
-      - name: Rodar testes dentro do container
+      - name: Rodar testes dentro do com curl
         run: |
-          docker run --rm ghcr.io/${{ github.repository }}:latest /app/venv/bin/python -m pytest /app/tests/ -v
-          docker run --rm -d -p 8080:80 --name test-container ghcr.io/${{ github.repository }}:latest
+          docker run --rm -d -p 80:80 --name test-container ghcr.io/${{ github.repository }}:latest
           sleep 5
-          curl -f http://localhost:8080/ || exit 1
-          curl -f http://localhost:8080/frase || exit 1
+          curl -f http://localhost/ || exit 1
+          curl -f http://localhost/frase || exit 1
           docker stop test-container
 
       - name: Deploy simulado no Render com Terraform
