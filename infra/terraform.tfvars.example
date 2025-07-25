@@ -1,0 +1,5 @@
+# Exemplo de arquivo terraform.tfvars
+# Copie este arquivo para terraform.tfvars e preencha com suas credenciais
+
+# API Key do Render - obtenha em: https://dashboard.render.com/account/api-keys
+render_api_key = "your-render-api-key-here"
