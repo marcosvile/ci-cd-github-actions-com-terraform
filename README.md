@@ -19,13 +19,13 @@ A aplicação consiste em uma API simples construída com Flask que:
 - **GET `/frase`** - Retorna uma frase motivacional aleatória
 - **Qualquer rota inexistente** - Retorna erro 404 personalizado
 
-## Executando com Docker
+## Executando a API localmente com Docker
 
 1. **Clone este repositório:**
 
    ```bash
    git clone <url-do-repositorio>
-   cd ci-cd-h3
+   cd ci-cd-github-actions-com-terraform
    ```
 
 2. **Construa a imagem Docker:**
@@ -41,6 +41,8 @@ A aplicação consiste em uma API simples construída com Flask que:
    ```
 
 4. **Teste a API:**
+
+Faça requisições para os endpoints usando `curl` ou acesso direto pelo navegador.
 
    - **Página inicial:**
      ```bash
@@ -75,12 +77,12 @@ A aplicação consiste em uma API simples construída com Flask que:
 ci-cd-h3/
 ├── .editorconfig                # Configurações do editor
 ├── .gitignore                   # Arquivos ignorados pelo Git
-├── Dockerfile                   # Configuração do container Docker (raiz)
+├── Dockerfile                   # Configuração do container Docker da API
 ├── LICENSE                      # Licença do projeto
 ├── README.md                    # Este arquivo
 ├── app/                         # Aplicação principal
 │   ├── advice.py                # Aplicação Flask principal
-│   └── requirements.txt         # Dependências Python
+│   └── requirements.txt         # Dependências Python da API
 └── infra/                       # Infraestrutura como código (Terraform)
     ├── main.tf                  # Configuração principal dos recursos
     ├── variables.tf             # Definições das variáveis
