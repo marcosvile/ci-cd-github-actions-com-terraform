@@ -28,25 +28,19 @@ A aplicação consiste em uma API simples construída com Flask que:
    cd ci-cd-h3
    ```
 
-2. **Navegue até o diretório da aplicação:**
-
-   ```bash
-   cd app
-   ```
-
-3. **Construa a imagem Docker:**
+2. **Construa a imagem Docker:**
 
    ```bash
    docker build -t api-advice .
    ```
 
-4. **Execute o container:**
+3. **Execute o container:**
 
    ```bash
    docker run -p 80:80 api-advice
    ```
 
-5. **Teste a API:**
+4. **Teste a API:**
 
    - **Página inicial:**
      ```bash
@@ -79,26 +73,54 @@ A aplicação consiste em uma API simples construída com Flask que:
 
 ```
 ci-cd-h3/
-├── .editorconfig       # Configurações do editor
-├── .gitignore         # Arquivos ignorados pelo Git
-├── LICENSE            # Licença do projeto
-├── README.md          # Este arquivo
-├── app/               # Aplicação principal
-│   ├── Dockerfile     # Configuração do container Docker
-│   ├── advice.py      # Aplicação Flask principal
-│   └── requirements.txt # Dependências Python
-└── infra/             # Infraestrutura (vazia por enquanto)
+├── .editorconfig                # Configurações do editor
+├── .gitignore                   # Arquivos ignorados pelo Git
+├── Dockerfile                   # Configuração do container Docker (raiz)
+├── LICENSE                      # Licença do projeto
+├── README.md                    # Este arquivo
+├── app/                         # Aplicação principal
+│   ├── advice.py                # Aplicação Flask principal
+│   └── requirements.txt         # Dependências Python
+└── infra/                       # Infraestrutura como código (Terraform)
+    ├── main.tf                  # Configuração principal dos recursos
+    ├── variables.tf             # Definições das variáveis
+    ├── outputs.tf               # Outputs do Terraform
+    ├── terraform.tfvars.example # Exemplo de arquivo de variáveis
+    └── README.md                # Documentação da infraestrutura
 ```
 
-## Docker
+## Infraestrutura
 
-O Dockerfile está localizado na pasta `app/` e inclui:
+O projeto inclui configuração de infraestrutura como código usando Terraform para provisionamento no Render.
 
-- **Alpine Linux** como sistema base (leve e eficiente)
-- **Python 3** e dependências de desenvolvimento
-- **Ambiente virtual** para isolamento de dependências
-- **Instalação automática** das dependências via pip
-- **Configuração de porta 80** para acesso direto via HTTP
-- **Encoding UTF-8** para suporte completo a caracteres especiais
+### Deploy com Terraform
 
-**Nota:** Certifique-se de executar os comandos Docker dentro do diretório `app/` onde está localizado o Dockerfile.
+1. **Navegue até o diretório de infraestrutura:**
+   ```bash
+   cd infra
+   ```
+
+2. **Configure suas credenciais:**
+   ```bash
+   cp terraform.tfvars.example terraform.tfvars
+   # Edite terraform.tfvars e adicione sua API Key do Render
+   ```
+
+3. **Inicialize e aplique a infraestrutura:**
+   ```bash
+   terraform init
+   terraform plan
+   terraform apply
+   ```
+
+Para mais detalhes sobre a infraestrutura, consulte o arquivo `infra/README.md`.
+
+### CI/CD Pipeline
+
+O projeto está configurado para funcionar com GitHub Actions que:
+
+1. Constrói automaticamente a imagem Docker
+2. Faz deploy no Render com GitHub Actions
+3. Provisiona a infraestrutura via Terraform
+
+A aplicação será implantada automaticamente sempre que houver commits na branch `main`.
