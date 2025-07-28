@@ -10,7 +10,8 @@ frases = [
     "Não pare até se orgulhar.",
     "Você é mais forte do que imagina.",
     "O sucesso é a soma de pequenos esforços repetidos todos os dias.",
-    "Grandes coisas nunca vêm da zona de conforto."
+    "Grandes coisas nunca vêm da zona de conforto.",
+    "Com grandes poderes, vem grandes responsabilidades"
 ]
 
 @app.route('/frase', methods=['GET'])
