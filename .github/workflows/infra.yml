@@ -18,12 +18,15 @@ jobs:
           terraform_version: 1.12.2
 
       - name: Terraform Init
+        working-directory: ./infra
         run: terraform init
 
       - name: Terraform Plan
+        working-directory: ./infra
         run: terraform plan -out=tfplan
 
       - name: Terraform Apply
+        working-directory: ./infra
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           RENDER_OWNER_ID: ${{ secrets.RENDER_OWNER_ID }}
