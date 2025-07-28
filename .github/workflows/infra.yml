@@ -24,6 +24,9 @@ jobs:
 
       - name: Terraform Plan
         working-directory: infra
+        env:
+          TF_VAR_render_api_key: ${{ secrets.RENDER_API_KEY }}
+          TF_VAR_render_owner_id: ${{ secrets.RENDER_OWNER_ID }}
         run: terraform plan -out=tfplan
 
       - name: Terraform Apply
