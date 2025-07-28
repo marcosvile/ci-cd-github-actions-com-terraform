@@ -25,11 +25,11 @@ jobs:
           docker stop test-container
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.12.2
 
-      - name: Deploy simulado no Render com Terraform
+      - name: Deploy no Render com Terraform
         run: |
           cd infra
           terraform init
