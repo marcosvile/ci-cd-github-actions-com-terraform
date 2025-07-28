@@ -12,7 +12,8 @@ frases = [
     "O sucesso é a soma de pequenos esforços repetidos todos os dias.",
     "Grandes coisas nunca vêm da zona de conforto.",
     "Com grandes poderes, vem grandes responsabilidades.",
-    "Não deveríamos temer a morte, mais sim a vida."
+    "Não deveríamos temer a morte, mais sim a vida.",
+    "Apreciando cada passo, mas já sonhando com as próximas conquistas."
 ]
 
 @app.route('/frase', methods=['GET'])
