@@ -19,7 +19,7 @@ resource "render_web_service" "app" {
 
   runtime_source = {
     docker = {
-      repo_url        = "https://github.com/marcosvile/ci-cd-h3"
+      repo_url        = "https://github.com/marcosvile/ci-cd-github-actions-com-terraform"
       branch          = "main"
       dockerfile_path = "Dockerfile"
       docker_context  = "."
@@ -30,5 +30,11 @@ resource "render_web_service" "app" {
     PORT = {
       value = "80"
     }
+  }
+
+  lifecycle {
+    ignore_changes = [
+      runtime_source[0].docker[0].repo_url
+    ]
   }
 }
